@@ -18,6 +18,7 @@
     "mailgun-js": "^0.14.0"
   },
   "devDependencies": {
+    "node-env-run": "^2.0.1",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },

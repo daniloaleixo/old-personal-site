@@ -1,8 +1,8 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
-var config = require('./config.js');
 var bodyParser = require('body-parser');
+
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -32,5 +32,6 @@ app.post('/email', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+	console.log(process.env.MAILGUN);
+    console.log('Node app is running on port', app.get('port'));
 });
