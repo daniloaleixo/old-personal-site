@@ -1,5 +1,5 @@
-var cool = require('cool-ascii-faces');
 var express = require('express');
+var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
@@ -11,22 +11,26 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index')
-});
+// app.get('/', function(request, response) {
+//   response.render('pages/index')
+// });
 
-app.get('/cool', function(request, response) {
-  response.send(cool());
-});
+// app.get('/cool', function(request, response) {
+//   response.send(cool());
+// });
 
 
 // Email engine
