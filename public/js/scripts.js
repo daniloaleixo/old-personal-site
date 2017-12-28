@@ -102,8 +102,8 @@
         var messageToSend = $('#contactMessage').val();
         console.log('vou mandar', emailToSend, messageToSend);
 
-        $.post("https://daniloaleixo-backend.herokuapp.com/email",
-        {
+        $.post("https://daniloaleixo.herokuapp.com/email",
+        { 
             email: emailToSend,
             message: messageToSend
         },
